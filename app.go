@@ -29,6 +29,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
         a {
           color:            black;
           text-decoration:  none;
+          outline:          none;
         }
 
         a:hover {
@@ -44,6 +45,12 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
           padding:      20px;
           background:   lightgrey;
           font-family:  monospace;
+        }
+
+        .function h3 {
+          font-size:   2em;
+          font-family: monospace;
+          font-weight: 900;
         }
       </style>
     </head>
@@ -64,37 +71,41 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
         your distributed systems.
       </p>
 
-      <hr />
+      <div class='function'>
+        <hr />
 
-      <h3>
-        GET <a href="/capitalize?arg=h" target="_blank">/capitalize?arg=h</a>
-      </h3>
+        <h3>
+          GET <a href="/capitalize?arg=h" target="_blank">/capitalize?arg=h</a>
+        </h3>
 
-      <p>
-        Responds with the capitalized version of the letter you request:
-      </p>
+        <p>
+          Responds with the capitalized version of the letter you request:
+        </p>
 
-      <blockquote>
-        H
-      </blockquote>
+        <blockquote>
+          H
+        </blockquote>
+      </div>
 
-      <hr />
+      <div class='function'>
+        <hr />
 
-      <h3>
-        GET <a href="/capitalize?arg=hello%2C%20how%20are%20you%3F" target="_blank">
-          /capitalize?arg=hello, how are you?
-        </a>
-      </h3>
+        <h3>
+          GET <a href="/capitalize?arg=hello%2C%20how%20are%20you%3F" target="_blank">
+            /capitalize?arg=hello, how are you?
+          </a>
+        </h3>
 
-      <p>
-        You are not restricted to capitalizing one letter at a time (though you
-        may find it more performant to do so in a distributed system) - you can
-        also request an entire string to be capitalized.
-      </p>
+        <p>
+          You are not restricted to capitalizing one letter at a time (though you
+          may find it more performant to do so in a distributed system) - you can
+          also request an entire string to be capitalized.
+        </p>
 
-      <blockquote>
-        HELLO, HOW ARE YOU?
-      </blockquote>
+        <blockquote>
+          HELLO, HOW ARE YOU?
+        </blockquote>
+      </div>
 
     </body>
   </html>
