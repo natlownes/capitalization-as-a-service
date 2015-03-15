@@ -7,7 +7,28 @@ import (
 )
 
 func CapitalizeHandler(w http.ResponseWriter, r *http.Request) {
-	input := r.FormValue("arg")
+	var input string
+
+	if r.Method == "GET" {
+		input = r.FormValue("arg")
+	}
+
+	if r.Method == "POST" {
+		if r.ContentLength == 0 {
+			http.Error(w, "HTTP Body required", 400)
+			return
+		}
+
+		body := make([]byte, r.ContentLength, r.ContentLength*100)
+		_, err := r.Body.Read(body)
+
+		if err != nil {
+			http.Error(w, "Failed reading body", 400)
+			return
+		}
+		input = string(body)
+	}
+
 	w.Header().Add("Content-Type", "text/plain; charset=utf-8")
 	fmt.Fprint(w, strings.ToUpper(input))
 }
@@ -105,6 +126,18 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
         <blockquote>
           HELLO, HOW ARE YOU?
         </blockquote>
+      </div>
+
+      <div class='function'>
+        <hr />
+
+        <h3>
+          POST /capitalize
+        </h3>
+
+        <p>
+          This too.  Responds with the capitalized body of the request.
+        </p>
       </div>
 
     </body>
