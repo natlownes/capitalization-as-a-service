@@ -62,6 +62,17 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
           border: 1px solid black;
         }
 
+        code {
+          padding:        10px;
+          margin-top:     10px;
+          margin-bottom:  10px;
+          background:     black;
+          border:         2px dotted green;
+          color:          white;
+          font-weight:    900;
+          display:        inline-block;
+        }
+
         blockquote {
           padding:      20px;
           background:   lightgrey;
@@ -137,6 +148,24 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
         <p>
           This too.  Responds with the capitalized body of the request.
+
+          <h5>
+            Example:
+          </h5>
+
+          <code>
+            cat /usr/share/dict/american-english | curl -X POST --data-binary @- http://strings.microservice.narf.io/capitalize
+          </code>
+
+          <h5>
+            Response:
+          </h5>
+          <blockquote>
+            DOGS<br />
+            FREEDOM<br />
+            HOTDOGS<br />
+            WEAPONS<br />
+          </blockquote>
         </p>
       </div>
 
